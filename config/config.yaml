@@ -1,0 +1,65 @@
+# Face Clustering System Configuration
+
+# Paths Configuration
+paths:
+  input_folder: "/path/to/input/folder"
+  output_folder: "/path/to/output/folder"
+  temp_folder: "data/temp"
+  log_folder: "logs"
+
+# Face Detection Configuration
+face_detection:
+  model_name: "buffalo_l"  # InsightFace model
+  detection_size: [640, 640]
+  min_face_size: 30
+  confidence_threshold: 0.5
+  providers: 
+    - "CUDAExecutionProvider"
+    - "CPUExecutionProvider"
+
+# Clustering Configuration
+clustering:
+  algorithm: "DBSCAN"
+  eps: 0.45
+  min_samples: 2
+  metric: "cosine"
+  eps_range: [0.3, 0.6]
+  eps_step: 0.05
+
+# Image Processing
+image_processing:
+  supported_formats: [".jpg", ".jpeg", ".png", ".bmp", ".tiff"]
+  max_image_size: [2048, 2048]
+  resize_quality: 95
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_name: "face_clustering.log"
+  max_file_size: 10485760  # 10MB
+  backup_count: 5
+
+# Debug and Visualization
+debug:
+  enabled: true
+  save_plots: true
+  save_intermediate_results: true
+
+# API Configuration (for future extensions)
+api:
+  endpoint: ""
+  api_key: ""
+  timeout: 30
+
+# Database Configuration (for future extensions)
+database:
+  type: "sqlite"
+  path: "data/face_clustering.db"
+  
+# Performance Configuration
+performance:
+  batch_size: 32
+  num_workers: 4
+  use_gpu: true
+  memory_limit: "4GB"
